@@ -6,8 +6,11 @@
 package DAO;
 
 import conexoes.ConexaoMySql;
+import java.io.InputStream;
 import java.util.ArrayList;
 import model.ModelProdutos;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperPrint;
 
 /**
  *
@@ -179,5 +182,35 @@ public class DAOProdutos extends ConexaoMySql {
         
         return listaModelProdutos;
     }
+    
+    public boolean gerarRelatorio(){
+        
+        try {
+            
+            this.conectar();
+            this.executarSQL("SELECT "
+                    + "cli_nome, "
+                    + "cli_endereco, "
+                    + "cli_bairro, "
+                    + "cli_cidade, "
+                    + "cli_uf, "
+                    + "cli_cep, "
+                    + "cli_telefone, "
+                        + "FROM tb_clientes");
+            
+            JRResultSetDataSource jrRS = new JRResultSetDataSource(getResultSet());
+            
+            InputStream caminhoRelatorio = this.getClass().getResourceAsStream("relatorios/relatoriosCliente.jasper");
+            JasperPrint jasperPrint = new 
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            this.fecharConexao();
+        }
+        
+    }
+    
+    
     
 }

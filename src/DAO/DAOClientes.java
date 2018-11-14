@@ -53,8 +53,6 @@ public class DAOClientes extends ConexaoMySql{
         
     }
     
-    public boolean excluirClienteDAO(pIdCliente){
-        
-    }
+   
     
 }
