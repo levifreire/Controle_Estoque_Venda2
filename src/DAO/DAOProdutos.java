@@ -6,10 +6,19 @@
 package DAO;
 
 import conexoes.ConexaoMySql;
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import static java.util.Objects.hash;
 import model.ModelProdutos;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 
 /**
@@ -31,12 +40,12 @@ public class DAOProdutos extends ConexaoMySql {
             
             return this.insertSQL(
             "INSERT INTO tb_produto ("
-            + "pk_idProduto, "
-            + "produtoNome, "
-            + "produtoValorEntrada, "
-            + "produtoValorSaida, "
-            + "produtoEstoque, "
-            + "produtoValidade"
+            + "pk_id_produto, "
+            + "pro_nome, "
+            + "pro_valor, "
+            + "pro_valor_final, "
+            + "pro_estoque, "
+            + "pro_validade"
             + ") VALUES ("
                     + "'" + pModelProdutos.getIdProduto() + "', "
                     + "'" + pModelProdutos.getProNome()+ "', "
@@ -65,7 +74,7 @@ public class DAOProdutos extends ConexaoMySql {
         try {
             this.conectar();
             return this.executarUpdateDeleteSQL(
-                    "DELETE FROM tb_produto WHERE pk_idProduto = '" + pIdProduto + "'" 
+                    "DELETE FROM tb_produto WHERE pk_id_produto = '" + pIdProduto + "'" 
                     );
         } catch (Exception e) {
             e.printStackTrace();
@@ -87,12 +96,12 @@ public class DAOProdutos extends ConexaoMySql {
             this.conectar();
             return this.executarUpdateDeleteSQL(
                     "UPDATE tb_produto SET "
-                    + "produtoNome = '" +pModelProduto.getProNome()+ "', "
-                    + "produtoValorEntrada = '" +pModelProduto.getProValorEntrada()+"', "
-                    + "produtoValorSaida = '" +pModelProduto.getProValorSaida()+ "', "
-                    + "produtoEstoque = '" +pModelProduto.getProEstoque()+ "', "
-                    + "produtoValidade = '" +pModelProduto.getProValidade()+ "'"
-                    + "WHERE pk_idProduto = " +pModelProduto.getIdProduto()+ ";");
+                    + "pro_nome = '" +pModelProduto.getProNome()+ "', "
+                    + "pro_valor = '" +pModelProduto.getProValorEntrada()+"', "
+                    + "pro_valor_final = '" +pModelProduto.getProValorSaida()+ "', "
+                    + "pro_estoque = '" +pModelProduto.getProEstoque()+ "', "
+                    + "pro_validade = '" +pModelProduto.getProValidade()+ "' "
+                    + "WHERE pk_id_produto = " +pModelProduto.getIdProduto()+ ";");
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -113,13 +122,13 @@ public class DAOProdutos extends ConexaoMySql {
         try {
             this.conectar();
             this.executarSQL("SELECT "
-                    + "pk_idProduto, "
-                    + "produtoNome, "
-                    + "produtoValorEntrada, "
-                    + "produtoValorSaida, "
-                    + "produtoEstoque, "
-                    + "produtoValidade "
-                    + "FROM tb_produto WHERE pk_idProduto = " +pIdProduto+ ";"
+                    + "pk_id_produto, "
+                    + "pro_nome, "
+                    + "pro_valor, "
+                    + "pro_valor_final, "
+                    + "pro_estoque, "
+                    + "pro_validade "
+                    + "FROM tb_produto WHERE pk_id_produto = " +pIdProduto+ ";"
             );
             
              while (this.getResultSet().next()) {     
@@ -154,12 +163,13 @@ public class DAOProdutos extends ConexaoMySql {
         try {
             this.conectar();
             this.executarSQL("SELECT "
-                    + "PK_idProduto, "
-                    + "produtoNome, "
-                    + "produtoValorEntrada, "
-                    + "produtoValorSaida, "
-                    + "produtoEstoque, "
-                    + "produtoValidade FROM tb_produto");
+                    + "pk_id_produto, "
+                    + "pro_nome, "
+                    + "pro_valor, "
+                    + "pro_valor_final, "
+                    + "pro_estoque, "
+                    + "pro_validade "
+                    + "FROM tb_produto");
             
             while (this.getResultSet().next()) {     
                 modelProduto = new ModelProdutos();
@@ -182,35 +192,6 @@ public class DAOProdutos extends ConexaoMySql {
         
         return listaModelProdutos;
     }
-    
-    public boolean gerarRelatorio(){
-        
-        try {
-            
-            this.conectar();
-            this.executarSQL("SELECT "
-                    + "cli_nome, "
-                    + "cli_endereco, "
-                    + "cli_bairro, "
-                    + "cli_cidade, "
-                    + "cli_uf, "
-                    + "cli_cep, "
-                    + "cli_telefone, "
-                        + "FROM tb_clientes");
-            
-            JRResultSetDataSource jrRS = new JRResultSetDataSource(getResultSet());
-            
-            InputStream caminhoRelatorio = this.getClass().getResourceAsStream("relatorios/relatoriosCliente.jasper");
-            JasperPrint jasperPrint = new 
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            this.fecharConexao();
-        }
-        
-    }
-    
     
     
 }
