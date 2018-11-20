@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d99ea19c-32e9-476a-8e56-afbd8aa6318e">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioClientes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="d99ea19c-32e9-476a-8e56-afbd8aa6318e">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -48,10 +48,6 @@ FROM
 				</textElement>
 				<text><![CDATA[Controle de Estoque]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="248" height="100" uuid="50f527c7-30fc-4a56-a2e7-86c8a0899bb4"/>
-				<imageExpression><![CDATA["C:\\Users\\levi\\Documents\\NetBeansProjects\\Controle_Estoque_Venda2\\src\\imagens\\LeProTek.gif"]]></imageExpression>
-			</image>
 			<line>
 				<reportElement x="0" y="99" width="555" height="1" uuid="5b6d9a35-d1aa-4e02-b09c-c3599a442fcc"/>
 			</line>

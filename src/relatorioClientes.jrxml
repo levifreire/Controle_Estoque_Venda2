@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="relatorioClientes" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d99ea19c-32e9-476a-8e56-afbd8aa6318e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="28"/>
+	<style name="Coluna" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Row">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#CCCCCC"/>
+		</conditionalStyle>
+	</style>
+	<style name="Sub Title" forecolor="#3333FF" backcolor="#3333FF" fontName="Arial Black" fontSize="16" isBold="true" isItalic="true"/>
+	<queryString>
+		<![CDATA[SELECT
+     tb_clientes.`pk_id_cliente` AS tb_clientes_pk_id_cliente,
+     tb_clientes.`cli_nome` AS tb_clientes_cli_nome,
+     tb_clientes.`cli_endereco` AS tb_clientes_cli_endereco,
+     tb_clientes.`cli_bairro` AS tb_clientes_cli_bairro,
+     tb_clientes.`cli_cidade` AS tb_clientes_cli_cidade,
+     tb_clientes.`cli_uf` AS tb_clientes_cli_uf,
+     tb_clientes.`cli_cep` AS tb_clientes_cli_cep,
+     tb_clientes.`cli_telefone` AS tb_clientes_cli_telefone,
+     tb_clientes.`cli_cpf` AS tb_clientes_cli_cpf
+FROM
+     `tb_clientes` tb_clientes]]>
+	</queryString>
+	<field name="tb_clientes_pk_id_cliente" class="java.math.BigInteger"/>
+	<field name="tb_clientes_cli_nome" class="java.lang.String"/>
+	<field name="tb_clientes_cli_endereco" class="java.lang.String"/>
+	<field name="tb_clientes_cli_bairro" class="java.lang.String"/>
+	<field name="tb_clientes_cli_cidade" class="java.lang.String"/>
+	<field name="tb_clientes_cli_uf" class="java.lang.String"/>
+	<field name="tb_clientes_cli_cep" class="java.lang.String"/>
+	<field name="tb_clientes_cli_telefone" class="java.lang.String"/>
+	<field name="tb_clientes_cli_cpf" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="258" y="28" width="284" height="41" backcolor="#990000" uuid="000e030a-95a2-4f1f-a856-fb0a0a878ff9"/>
+				<textElement>
+					<font isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Controle de Estoque]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="99" width="555" height="1" uuid="5b6d9a35-d1aa-4e02-b09c-c3599a442fcc"/>
+			</line>
+			<staticText>
+				<reportElement style="Sub Title" x="316" y="79" width="189" height="20" uuid="2996a64c-83e4-43e2-8158-9c0bbbd1bbd7"/>
+				<textElement>
+					<font fontName="Arial Black" size="14"/>
+				</textElement>
+				<text><![CDATA[Relatório de Clientes]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="20" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="6d6587c1-fdf8-48c7-a016-79e7ea3eafa0"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Coluna" x="0" y="1" width="39" height="20" uuid="595b7520-925f-4948-ac24-60fea696cd17"/>
+				<text><![CDATA[Cod.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="39" y="1" width="100" height="20" uuid="45f72dcc-a18b-4e6f-81fa-90a2d7eb3185"/>
+				<text><![CDATA[Nome]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="139" y="1" width="100" height="20" uuid="935b0409-eb0e-4563-9151-8b38ed559ce2"/>
+				<text><![CDATA[Cidade]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="239" y="0" width="100" height="21" uuid="5cc061d9-7cae-40f1-8608-60342b08670c"/>
+				<text><![CDATA[Endereço]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="339" y="1" width="78" height="20" uuid="eca98f5e-0406-483c-b265-4c1f023999b8"/>
+				<text><![CDATA[Bairro]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="471" y="0" width="71" height="21" uuid="18ea57c4-51eb-40f6-a608-f75ffb440abc"/>
+				<text><![CDATA[Telefone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Coluna" x="417" y="0" width="54" height="21" uuid="0d60c993-e620-46cd-9d1a-28a5b591eb45"/>
+				<text><![CDATA[Estado]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" backcolor="#FFFFCC" uuid="2e3ad74d-7b70-4bc4-adbd-0664b19b3680"/>
+			</frame>
+			<textField>
+				<reportElement x="0" y="0" width="39" height="20" uuid="facb9abd-9d1d-4d41-8d2d-8adacc02ffd9"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_pk_id_cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="39" y="0" width="100" height="20" uuid="31be3189-e257-42b3-89c3-446c1aed9fab"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="0" width="100" height="20" uuid="8ce757e8-6dfc-4706-8097-a2d009d7e6dc"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_cidade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="239" y="0" width="100" height="20" uuid="48d1af8a-a957-405b-ab7a-a47da1599dab"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_endereco}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="339" y="0" width="78" height="20" uuid="680e5f47-bd5f-46ed-8995-34021448d186"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_bairro}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="471" y="0" width="71" height="20" uuid="d563d4a8-8bf2-48c8-aa4d-e7074d06d967"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_telefone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="417" y="0" width="54" height="20" uuid="5efac249-ec50-4674-8fc7-7ddb86d372d3"/>
+				<textFieldExpression><![CDATA[$F{tb_clientes_cli_uf}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="542" height="1" uuid="9e6afbf4-7701-4083-91a3-72bd715612e0"/>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="15" forecolor="#CCCCCC" backcolor="#CCCCCC" uuid="512536a6-3153-4aa3-9d39-6a4d389f4d7d"/>
+			</rectangle>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="15" uuid="f9dc17c8-29d8-42e5-9a9e-6d6e3e14eef9"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Detail" x="0" y="0" width="239" height="15" uuid="97b2af13-433f-4824-bd42-8f9acbe4612c"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -11,11 +11,15 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+
 
 /**
  *
@@ -42,18 +46,24 @@ public class RelatorioClientes extends ConexaoMySql{
             
             JRResultSetDataSource jrRS = new JRResultSetDataSource(getResultSet());
             //String caminhoRelatorio = 
+            //String caminhoRelatorio1 = "relatorios/relatorioClientes.jasper";
+            Map parametro = new HashMap();
+            InputStream caminhoRelatorio = this.getClass().getClassLoader().getResourceAsStream("relatorios/relatorioClientes.jasper");
+            //JasperReport caminhoRelatorio = (JasperReport) JRLoader.loadObject("relatorios/relatorioClientes.jasper");
             
-            InputStream caminhoRelatorio = this.getClass().getClassLoader().getResourceAsStream("relatorios/relatorioCliente.jasper");
+            JasperPrint jasperPrint =  JasperFillManager.fillReport(caminhoRelatorio, parametro, jrRS);
             
-            JasperPrint jasperPrint =  JasperFillManager.fillReport(caminhoRelatorio, new HashMap<>(), jrRS);
-            JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/Users/levi/Documents/NetBeansProjects/Controle_Estoque_Venda2/relatorio.pdf");
+            //JasperViewer jrviewer = new JasperViewer(jasperPrint, false);
+            //jrviewer.setVisible(true);  
             
-            File file = new File("C:/Users/levi/Documents/NetBeansProjects/Controle_Estoque_Venda2/relatorio.pdf");
+            JasperExportManager.exportReportToPdfFile(jasperPrint, "C:/Users/levif/Documents/NetBeansProjects/Controle_Estoque_Venda2/rel/relatorio.pdf");
+            
+            File file = new File("C:/Users/levif/Documents/NetBeansProjects/Controle_Estoque_Venda2/rel/relatorio.pdf");
             
             try {
-                
-            } catch (Exception e) {
                 Desktop.getDesktop().print(file);
+            } catch (Exception e) {
+                JOptionPane.showConfirmDialog(null, e);
             }
             file.deleteOnExit();
             return true;
