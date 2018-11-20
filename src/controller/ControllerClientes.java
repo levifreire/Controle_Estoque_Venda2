@@ -6,7 +6,7 @@
 package controller;
 
 import DAO.DAOClientes;
-import java.io.IOException;
+
 
 /**
  *
@@ -16,8 +16,6 @@ public class ControllerClientes {
     
     DAOClientes daoClientes = new DAOClientes();
     
-    public boolean relatorioClienteController() throws IOException{
-        return this.daoClientes.gerarRelatorio();
-    }
+    
     
 }

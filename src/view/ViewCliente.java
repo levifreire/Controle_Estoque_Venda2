@@ -8,6 +8,7 @@ package view;
 //TESTANDOOOOOOOOOOOOOOOOOOOOOO
 
 import controller.ControllerClientes;
+import controller.ControllerRelatorios;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +27,7 @@ public class ViewCliente extends javax.swing.JFrame {
     
     ModelClientes modelClientes = new ModelClientes();
     ControllerClientes controllerCliente = new ControllerClientes();
+    ControllerRelatorios controllerRelatorio = new ControllerRelatorios();
     
     public ViewCliente() {
         initComponents();
@@ -65,7 +67,7 @@ public class ViewCliente extends javax.swing.JFrame {
         jbNovo = new javax.swing.JButton();
         jbSalvar = new javax.swing.JButton();
         jbAlterar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jbRelatorioCliente = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -144,10 +146,10 @@ public class ViewCliente extends javax.swing.JFrame {
         jbAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/if_Edit_132232.png"))); // NOI18N
         jbAlterar.setText("Alterar");
 
-        jButton1.setText("Relatorio Cliente");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbRelatorioCliente.setText("Relatorio Cliente");
+        jbRelatorioCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbRelatorioClienteActionPerformed(evt);
             }
         });
 
@@ -170,7 +172,7 @@ public class ViewCliente extends javax.swing.JFrame {
                                 .addComponent(jbAlterar)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton1)
+                                    .addComponent(jbRelatorioCliente)
                                     .addComponent(jbSalvar))))
                         .addGap(0, 29, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -247,7 +249,7 @@ public class ViewCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jbRelatorioCliente)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jbCancelar)
@@ -271,14 +273,14 @@ public class ViewCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbRelatorioClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRelatorioClienteActionPerformed
         try {
             // TODO add your handling code here:
-            controllerCliente.relatorioClienteController();
+            controllerRelatorio.relatorioClienteController();
         } catch (IOException ex) {
             Logger.getLogger(ViewCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbRelatorioClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,7 +318,6 @@ public class ViewCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -333,6 +334,7 @@ public class ViewCliente extends javax.swing.JFrame {
     private javax.swing.JButton jbAlterar;
     private javax.swing.JButton jbCancelar;
     private javax.swing.JButton jbNovo;
+    private javax.swing.JButton jbRelatorioCliente;
     private javax.swing.JButton jbSalvar;
     private javax.swing.JComboBox<String> jcbUF;
     private javax.swing.JTextField jtfBairro;
